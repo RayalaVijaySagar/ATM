@@ -1,0 +1,98 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Welcome obj = new Welcome();
+        obj.pin();
+    }
+
+    public void move() {
+        contine obj1 = new contine();
+        boolean b = true;
+        while (b) {
+            System.out.println("Do You Wanna Continue \n1.yes \n2.No");
+            Scanner sc = new Scanner(System.in);
+            int i = sc.nextInt();
+            switch (i) {
+                case 1:
+                    obj1.conti();
+                    break;
+                case 2:
+                    b = false;
+                    break;
+                default:
+                    System.out.println("please Enter the valid input");
+            }
+        }
+        System.out.println("Thanks For Visiting out ATM");
+    }
+}
+class contine{
+    public void conti(){
+        Options obj=new Options();
+        obj.show();
+    }
+}
+class Options{
+    public void show(){
+        changePin obj=new changePin();
+        balance obj1=new balance();
+        Withdrawal obj2=new Withdrawal();
+        System.out.println("Please select the options  \n1.Balance Enquiry\n2.Withdrawal\n3.Mini Statement\n4.Change pin");
+        Scanner sc=new Scanner(System.in);
+        int i=sc.nextInt();
+        switch(i){
+            case 1:
+                obj1.balance();
+                break;
+
+            case 2:
+                obj2.withdrawal();
+                break;
+            case 3:
+                System.out.println("Collect the receipt");
+                break;
+            case 4:
+                System.out.println("Enter the new pin");
+                int k=sc.nextInt();
+                obj.pin(k);
+                break;
+            default:
+                System.out.println("Enter the valid input");
+        }
+    }}
+class Welcome {
+    static int i=9848;
+
+    public void pin(){
+        System.out.println("Welcome User  \nplese place your card");
+        Options obj=new Options();
+        Main obj1=new Main();
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Enter the pin :");
+        int pin=sc.nextInt();
+        if(pin==i){
+            obj.show();
+            obj1.move();
+        }
+        else{
+            System.out.println("Enter Valid input");
+        }
+    }
+}
+class balance{
+    public void balance(){
+        System.out.println("Feching Balance");
+    }
+}
+class changePin extends Welcome{
+    public void pin(int i){
+        this.i=i;
+        System.out.println("Your pin updated successfully  \nYour New Pin is "+i);
+    }
+}
+class Withdrawal{
+    public void withdrawal(){
+        System.out.println("Please Enter the amount \nCollect the cash: ");
+    }
+}
